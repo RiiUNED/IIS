@@ -1,0 +1,1099 @@
+!SESSION 2023-03-24 20:08:23.938 -----------------------------------------------
+eclipse.buildId=4.18.0.I20201202-1800
+java.version=15.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.jface 2 0 2023-03-24 20:09:21.595
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-03-24 20:09:21.595
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@575d48db,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1b36d248,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-03-24 20:09:48.492
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Ricardo'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jdt.core 4 4 2023-03-25 01:40:54.121
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package calendario;
+
+public class Servicios {
+
+	public static void printMes(int init, Mes mes, int anno) {
+		System.out.println(mes+" - "+ anno);
+		int top = diasMes(mes, anno);
+		int corte = 9-init;
+		if(init<=5) {
+			corte9-init
+		}
+		printCabeza();
+		printDinit(init);
+		System.out.println();
+		printMes(corte, top);
+	}
+	
+	private static int diasMes(Mes mes, int anno) {
+		int dias = 0;
+		switch(mes) {
+		case Enero:
+			dias=31;
+			break;
+		case Febrero:
+			if(Fecha.esBisiesto(anno)) {
+				dias=29;
+			} else {
+				dias=28;
+				break;
+			}
+			break;
+		case Marzo:
+			dias=31;
+			break;
+		case Abril:
+			dias=30;
+			break;
+		case Mayo:
+			dias=31;
+			break;
+		case Junio:
+			dias=30;
+			break;
+		case Julio:
+			dias=31;
+			break;
+		case Agosto:
+			dias=31;
+			break;
+		case Septiembre:
+			dias=30;
+			break;
+		case Octubre:
+			dias=31;
+			break;
+		case Noviembre:
+			dias=30;
+			break;
+		case Diciembre:
+			dias=30;
+			break;
+			
+		}
+		return dias;
+	}
+
+	private static void printDinit(int init) {
+		int limite = 5;
+		String blanco = "  ";
+		if (init <= 5) {
+			for (int i = 1; i < init; ++i) {
+				System.out.print(blanco);
+				separador1();
+			}
+			for (int i = 1; i <= limite-init; ++i) {
+				printDia(i);
+			}
+			printViernes(6-init);
+			for (int i = limite-init + 2; i <= 8-init; ++i) {
+				printDia(i);
+			}
+		} else {
+			for (int i = 1; i <= init-1; ++i) {
+				System.out.print(blanco);
+				separador1();
+			}
+			System.out.print(blanco);
+			for (int i = init; i < 8; ++i) {
+				printDia(i);
+			}
+		}
+	}
+
+	
+
+	public static int SumDiaM(Mes mes, int anno) {
+		int sum = 0;
+		int op1 = 30;
+		int op2 = 31;
+		int op3 = 28;
+		int op4 = 29;
+		int top = mes.ordinal();
+		for (int i = 0; i < top; ++i) {
+			if (i == 0) {
+				sum += op2;
+			}
+			if (i == 1 && Fecha.esBisiesto(anno)) {
+				sum += op4;
+			}
+			if (i == 1 && !Fecha.esBisiesto(anno)) {
+				sum += op3;
+			}
+			if (i == 2) {
+				sum += op2;
+			}
+			if (i == 3) {
+				sum += op1;
+			}
+			if (i == 4) {
+				sum += op2;
+			}
+			if (i == 5) {
+				sum += op1;
+			}
+			if (i == 6) {
+				sum += op2;
+			}
+			if (i == 7) {
+				sum += op2;
+			}
+			if (i == 8) {
+				sum += op1;
+			}
+			if (i == 9) {
+				sum += op2;
+			}
+			if (i == 10) {
+				sum += op1;
+			}
+		}
+		return sum;
+	}
+
+	public static int sumDiaA(int anno) {
+		int sum = 0;
+		int init = 1601;
+		int top = anno - 1;
+		int dB = 366;
+		int dNB = 365;
+		for (int i = init; i <= top; i++) {
+			if (Fecha.esBisiesto(i)) {
+				sum += dB;
+			} else {
+				sum += dNB;
+			}
+		}
+		return sum;
+	}
+
+	private static void printCabeza() {
+		System.out.println("======================");
+		System.out.println("LU MA MI JU VI | SA DO");
+		System.out.println("======================");
+	}
+
+	private static void printMes(int init, int top) {
+		int viernes = 5;
+		int domingo = 7;
+		boolean cV = false;
+		boolean cD = false;
+		int contador = 1;
+		for (int i = init; i <= top; i++) {
+			cV = contador % viernes == 0;
+			cD = contador % domingo == 0;
+			if (!(cV) && !(cD)) {
+				printDia(i);
+			}
+			if (cV) {
+				printViernes(i);
+			}
+			if (cD) {
+				printDomingo(i);
+				contador = 0;
+			}
+			++contador;
+		}
+	}
+
+	private static void printDomingo(int dia) {
+		int l = 10;
+		if (dia < l) {
+			printN1F(dia);
+		} else {
+			printN2F(dia);
+		}
+	}
+
+	private static void printViernes(int dia) {
+
+		int l = 10;
+		if (dia < l) {
+			printN1(dia);
+		} else {
+			printN2(dia);
+		}
+		separador2();
+
+	}
+
+	private static void printDia(int dia) {
+
+		int l = 10;
+		if (dia < l) {
+			printN1(dia);
+		} else {
+			printN2(dia);
+		}
+		separador1();
+
+	}
+
+	private static void printN1(int n) {
+		System.out.print(" " + n);
+	}
+
+	private static void printN1F(int n) {
+		System.out.println(" " + n);
+	}
+
+	private static void printN2(int n) {
+		System.out.print(n);
+	}
+
+	private static void printN2F(int n) {
+		System.out.println(n);
+	}
+
+	private static void separador1() {
+		System.out.print(" ");
+	}
+
+	private static void separador2() {
+		System.out.print(" | ");
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.InfixExpression.setOperator(InfixExpression.java:383)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1276)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2020)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3764)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1932)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1204)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1963)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3023)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2203)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2968)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:751)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:474)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:200)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2023-03-25 01:40:54.149
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.InfixExpression.setOperator(InfixExpression.java:383)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1276)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2020)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3764)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1932)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1204)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1963)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3023)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2203)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2968)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:751)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:474)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:200)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2023-03-25 01:40:54.150
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.InfixExpression.setOperator(InfixExpression.java:383)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1276)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2020)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3764)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1932)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1204)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1963)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3023)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2203)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2968)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:751)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:474)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:200)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+
+!ENTRY org.eclipse.jdt.core 4 4 2023-03-25 01:40:54.189
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package calendario;
+
+public class Servicios {
+
+	public static void printMes(int init, Mes mes, int anno) {
+		System.out.println(mes+" - "+ anno);
+		int top = diasMes(mes, anno);
+		int corte = 9-init;
+		if(init<=5) {
+			corte9-init
+		}
+		printCabeza();
+		printDinit(init);
+		System.out.println();
+		printMes(corte, top);
+	}
+	
+	private static int diasMes(Mes mes, int anno) {
+		int dias = 0;
+		switch(mes) {
+		case Enero:
+			dias=31;
+			break;
+		case Febrero:
+			if(Fecha.esBisiesto(anno)) {
+				dias=29;
+			} else {
+				dias=28;
+				break;
+			}
+			break;
+		case Marzo:
+			dias=31;
+			break;
+		case Abril:
+			dias=30;
+			break;
+		case Mayo:
+			dias=31;
+			break;
+		case Junio:
+			dias=30;
+			break;
+		case Julio:
+			dias=31;
+			break;
+		case Agosto:
+			dias=31;
+			break;
+		case Septiembre:
+			dias=30;
+			break;
+		case Octubre:
+			dias=31;
+			break;
+		case Noviembre:
+			dias=30;
+			break;
+		case Diciembre:
+			dias=30;
+			break;
+			
+		}
+		return dias;
+	}
+
+	private static void printDinit(int init) {
+		int limite = 5;
+		String blanco = "  ";
+		if (init <= 5) {
+			for (int i = 1; i < init; ++i) {
+				System.out.print(blanco);
+				separador1();
+			}
+			for (int i = 1; i <= limite-init; ++i) {
+				printDia(i);
+			}
+			printViernes(6-init);
+			for (int i = limite-init + 2; i <= 8-init; ++i) {
+				printDia(i);
+			}
+		} else {
+			for (int i = 1; i <= init-1; ++i) {
+				System.out.print(blanco);
+				separador1();
+			}
+			System.out.print(blanco);
+			for (int i = init; i < 8; ++i) {
+				printDia(i);
+			}
+		}
+	}
+
+	
+
+	public static int SumDiaM(Mes mes, int anno) {
+		int sum = 0;
+		int op1 = 30;
+		int op2 = 31;
+		int op3 = 28;
+		int op4 = 29;
+		int top = mes.ordinal();
+		for (int i = 0; i < top; ++i) {
+			if (i == 0) {
+				sum += op2;
+			}
+			if (i == 1 && Fecha.esBisiesto(anno)) {
+				sum += op4;
+			}
+			if (i == 1 && !Fecha.esBisiesto(anno)) {
+				sum += op3;
+			}
+			if (i == 2) {
+				sum += op2;
+			}
+			if (i == 3) {
+				sum += op1;
+			}
+			if (i == 4) {
+				sum += op2;
+			}
+			if (i == 5) {
+				sum += op1;
+			}
+			if (i == 6) {
+				sum += op2;
+			}
+			if (i == 7) {
+				sum += op2;
+			}
+			if (i == 8) {
+				sum += op1;
+			}
+			if (i == 9) {
+				sum += op2;
+			}
+			if (i == 10) {
+				sum += op1;
+			}
+		}
+		return sum;
+	}
+
+	public static int sumDiaA(int anno) {
+		int sum = 0;
+		int init = 1601;
+		int top = anno - 1;
+		int dB = 366;
+		int dNB = 365;
+		for (int i = init; i <= top; i++) {
+			if (Fecha.esBisiesto(i)) {
+				sum += dB;
+			} else {
+				sum += dNB;
+			}
+		}
+		return sum;
+	}
+
+	private static void printCabeza() {
+		System.out.println("======================");
+		System.out.println("LU MA MI JU VI | SA DO");
+		System.out.println("======================");
+	}
+
+	private static void printMes(int init, int top) {
+		int viernes = 5;
+		int domingo = 7;
+		boolean cV = false;
+		boolean cD = false;
+		int contador = 1;
+		for (int i = init; i <= top; i++) {
+			cV = contador % viernes == 0;
+			cD = contador % domingo == 0;
+			if (!(cV) && !(cD)) {
+				printDia(i);
+			}
+			if (cV) {
+				printViernes(i);
+			}
+			if (cD) {
+				printDomingo(i);
+				contador = 0;
+			}
+			++contador;
+		}
+	}
+
+	private static void printDomingo(int dia) {
+		int l = 10;
+		if (dia < l) {
+			printN1F(dia);
+		} else {
+			printN2F(dia);
+		}
+	}
+
+	private static void printViernes(int dia) {
+
+		int l = 10;
+		if (dia < l) {
+			printN1(dia);
+		} else {
+			printN2(dia);
+		}
+		separador2();
+
+	}
+
+	private static void printDia(int dia) {
+
+		int l = 10;
+		if (dia < l) {
+			printN1(dia);
+		} else {
+			printN2(dia);
+		}
+		separador1();
+
+	}
+
+	private static void printN1(int n) {
+		System.out.print(" " + n);
+	}
+
+	private static void printN1F(int n) {
+		System.out.println(" " + n);
+	}
+
+	private static void printN2(int n) {
+		System.out.print(n);
+	}
+
+	private static void printN2F(int n) {
+		System.out.println(n);
+	}
+
+	private static void separador1() {
+		System.out.print(" ");
+	}
+
+	private static void separador2() {
+		System.out.print(" | ");
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.InfixExpression.setOperator(InfixExpression.java:383)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1276)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2020)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3764)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1932)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1204)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1963)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3023)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2203)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2968)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:751)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:323)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1231)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:820)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider$1.run(CoreASTProvider.java:272)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.createAST(CoreASTProvider.java:264)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:197)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:187)
+	at org.eclipse.jdt.core.manipulation.SharedASTProviderCore.getAST(SharedASTProviderCore.java:138)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:151)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.core.manipulation 4 2 2023-03-25 01:40:54.191
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core.manipulation".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.InfixExpression.setOperator(InfixExpression.java:383)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1276)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2020)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3764)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1932)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1204)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1963)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3023)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2203)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2968)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:751)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:323)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1231)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:820)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider$1.run(CoreASTProvider.java:272)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.createAST(CoreASTProvider.java:264)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:197)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:187)
+	at org.eclipse.jdt.core.manipulation.SharedASTProviderCore.getAST(SharedASTProviderCore.java:138)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:151)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.core.manipulation 4 0 2023-03-25 01:40:54.193
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.InfixExpression.setOperator(InfixExpression.java:383)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1276)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2020)
+	at org.eclipse.jdt.core.dom.ASTConverter.convertToParenthesizedExpression(ASTConverter.java:3764)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1932)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1204)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1963)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3023)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2203)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:2968)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:751)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.convert(CompilationUnitResolver.java:323)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1231)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:820)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider$1.run(CoreASTProvider.java:272)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.createAST(CoreASTProvider.java:264)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:197)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:187)
+	at org.eclipse.jdt.core.manipulation.SharedASTProviderCore.getAST(SharedASTProviderCore.java:138)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:166)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:151)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.core 4 4 2023-03-25 02:51:20.270
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package calendario;
+
+import java.util.*;
+
+public class Servicios {
+
+	public static Mes getMes(Scanner sc) {
+		int mes;
+
+		do {
+			System.out.print("Ingrese el mes (1..12): ");
+			mes = sc.nextInt();
+		} while (mes < 1 || mes > 12);
+/*
+		do {
+			System.out.print("Ingrese el año (1601..3000): ");
+			anno = input.nextInt();
+		} while (anno < 1601 || anno > 3000);
+
+		System.out.println("El mes y año ingresados son: " + mes + "/" + anno);
+*/	
+		return Mes.values().clone()[mes+1]; 
+	}
+	
+	public static getAnno(Scanner sc)
+
+	public static void printMes(int init, Mes mes, int anno) {
+		System.out.println(mes + " - " + anno);
+		int top = diasMes(mes, anno);
+		int corte = 9 - init;
+		printCabeza();
+		printDinit(init);
+		System.out.println();
+		printMes(corte, top);
+	}
+
+	private static int diasMes(Mes mes, int anno) {
+		int dias = 0;
+		switch (mes) {
+		case Enero:
+			dias = 31;
+			break;
+		case Febrero:
+			if (Fecha.esBisiesto(anno)) {
+				dias = 29;
+			} else {
+				dias = 28;
+				break;
+			}
+			break;
+		case Marzo:
+			dias = 31;
+			break;
+		case Abril:
+			dias = 30;
+			break;
+		case Mayo:
+			dias = 31;
+			break;
+		case Junio:
+			dias = 30;
+			break;
+		case Julio:
+			dias = 31;
+			break;
+		case Agosto:
+			dias = 31;
+			break;
+		case Septiembre:
+			dias = 30;
+			break;
+		case Octubre:
+			dias = 31;
+			break;
+		case Noviembre:
+			dias = 30;
+			break;
+		case Diciembre:
+			dias = 30;
+			break;
+
+		}
+		return dias;
+	}
+
+	private static void printDinit(int init) {
+		int limite = 5;
+		String blanco = "  ";
+		if (init <= 5) {
+			for (int i = 1; i < init; ++i) {
+				System.out.print(blanco);
+				separador1();
+			}
+			for (int i = 1; i <= limite - init; ++i) {
+				printDia(i);
+			}
+			printViernes(6 - init);
+			for (int i = limite - init + 2; i <= 8 - init; ++i) {
+				printDia(i);
+			}
+		} else {
+			for (int i = 1; i <= init - 1; ++i) {
+				System.out.print(blanco);
+				separador1();
+			}
+			System.out.print(blanco);
+			for (int i = 1; i <= 8 - init; ++i) {
+				printDia(i);
+			}
+		}
+	}
+
+	private static int SumDiaM(Mes mes, int anno) {
+		int sum = 0;
+		int op1 = 30;
+		int op2 = 31;
+		int op3 = 28;
+		int op4 = 29;
+		int top = mes.ordinal();
+		for (int i = 0; i < top; ++i) {
+			if (i == 0) {
+				sum += op2;
+			}
+			if (i == 1 && Fecha.esBisiesto(anno)) {
+				sum += op4;
+			}
+			if (i == 1 && !Fecha.esBisiesto(anno)) {
+				sum += op3;
+			}
+			if (i == 2) {
+				sum += op2;
+			}
+			if (i == 3) {
+				sum += op1;
+			}
+			if (i == 4) {
+				sum += op2;
+			}
+			if (i == 5) {
+				sum += op1;
+			}
+			if (i == 6) {
+				sum += op2;
+			}
+			if (i == 7) {
+				sum += op2;
+			}
+			if (i == 8) {
+				sum += op1;
+			}
+			if (i == 9) {
+				sum += op2;
+			}
+			if (i == 10) {
+				sum += op1;
+			}
+		}
+		return sum;
+	}
+
+	private static int sumDiaA(int anno) {
+		int sum = 0;
+		int init = 1601;
+		int top = anno - 1;
+		int dB = 366;
+		int dNB = 365;
+		for (int i = init; i <= top; i++) {
+			if (Fecha.esBisiesto(i)) {
+				sum += dB;
+			} else {
+				sum += dNB;
+			}
+		}
+		return sum;
+	}
+
+	private static void printCabeza() {
+		System.out.println("======================");
+		System.out.println("LU MA MI JU VI | SA DO");
+		System.out.println("======================");
+	}
+
+	private static void printMes(int init, int top) {
+		int viernes = 5;
+		int domingo = 7;
+		boolean cV = false;
+		boolean cD = false;
+		int contador = 1;
+		for (int i = init; i <= top; i++) {
+			cV = contador % viernes == 0;
+			cD = contador % domingo == 0;
+			if (!(cV) && !(cD)) {
+				printDia(i);
+			}
+			if (cV) {
+				printViernes(i);
+			}
+			if (cD) {
+				printDomingo(i);
+				contador = 0;
+			}
+			++contador;
+		}
+	}
+
+	private static void printDomingo(int dia) {
+		int l = 10;
+		if (dia < l) {
+			printN1F(dia);
+		} else {
+			printN2F(dia);
+		}
+	}
+
+	private static void printViernes(int dia) {
+
+		int l = 10;
+		if (dia < l) {
+			printN1(dia);
+		} else {
+			printN2(dia);
+		}
+		separador2();
+
+	}
+
+	private static void printDia(int dia) {
+
+		int l = 10;
+		if (dia < l) {
+			printN1(dia);
+		} else {
+			printN2(dia);
+		}
+		separador1();
+
+	}
+
+	private static void printN1(int n) {
+		System.out.print(" " + n);
+	}
+
+	private static void printN1F(int n) {
+		System.out.println(" " + n);
+	}
+
+	private static void printN2(int n) {
+		System.out.print(n);
+	}
+
+	private static void printN2F(int n) {
+		System.out.println(n);
+	}
+
+	private static void separador1() {
+		System.out.print(" ");
+	}
+
+	private static void separador2() {
+		System.out.print(" | ");
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3146)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:725)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:474)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:200)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2023-03-25 02:51:20.272
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3146)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:725)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:474)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:200)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2023-03-25 02:51:20.273
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3146)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:725)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3316)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1513)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:474)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:200)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:266)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:740)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:806)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)

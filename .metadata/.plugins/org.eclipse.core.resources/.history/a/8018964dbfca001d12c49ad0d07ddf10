@@ -1,0 +1,7 @@
+package gesFlota;
+
+public enum Carga {
+	Crudo,
+	Refinado(fuel, gasoil, gasolina),
+	Vacio;
+}

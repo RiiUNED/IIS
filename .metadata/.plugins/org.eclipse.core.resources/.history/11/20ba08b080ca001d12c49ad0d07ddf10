@@ -1,0 +1,22 @@
+package calendario;
+
+import java.util.LinkedList;
+
+public class Calendario {
+	
+	public static void main(String[] args) {
+		
+		int annoT1 = 1604;
+		int annoT2 = 1992;
+		int annoT3 = 2000;
+		int annoT4 = 2400;
+		int annoT5 = 1900;
+		int annoT6 = 2100;
+		int annoT7 = 2900;
+		
+		if (Fecha.esBisiesto(annoT1)) {
+			
+		}
+	}
+
+}

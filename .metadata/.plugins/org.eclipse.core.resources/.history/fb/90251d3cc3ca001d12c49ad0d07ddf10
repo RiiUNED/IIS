@@ -1,0 +1,14 @@
+package gesFlota;
+
+public class Operacion {
+	private OperacionPuerto carga;
+	private Traslado traslado;
+	private OperacionPuerto descarga;
+	
+	public Operacion(OperacionPuerto carga, Traslado traslado, OperacionPuerto descarga) {
+		this.carga = carga;
+		this.traslado = traslado;
+		this.descarga = descarga;
+	}
+
+}

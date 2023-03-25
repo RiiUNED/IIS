@@ -1,0 +1,7 @@
+package gesFlota;
+
+public enum Refinado {
+	Fuel,
+	Gasoil,
+	Gasolina;
+}

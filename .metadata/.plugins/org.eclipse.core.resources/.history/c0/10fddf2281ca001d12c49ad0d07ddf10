@@ -1,0 +1,33 @@
+package calendario;
+
+import java.util.LinkedList;
+
+public class Calendario {
+	
+	public static void main(String[] args) {
+		
+		Integer annoT1 = 1604;
+		Integer annoT2 = 1992;
+		Integer annoT3 = 2000;
+		Integer annoT4 = 2400;
+		Integer annoT5 = 1900;
+		Integer annoT6 = 2100;
+		Integer annoT7 = 2900;
+		
+		LinkedList<Integer> annoTest = new LinkedList<Integer>();
+		annoTest.add(annoT1);
+		annoTest.add(annoT2);
+		annoTest.add(annoT3);
+		annoTest.add(annoT4);
+		annoTest.add(annoT5);
+		annoTest.add(annoT5);
+		annoTest.add(annoT6);
+		
+		if (Fecha.esBisiesto(annoT1)) {
+			System.out.println(annoT1 + " es bisiesto.");
+		} else {
+			System.out.println(annoT1 + " NO es bisiesto.");
+		}
+	}
+
+}

@@ -1,0 +1,6 @@
+package gesFlota;
+
+public enum TipoOperacion {
+Carga,
+Descarga;
+}

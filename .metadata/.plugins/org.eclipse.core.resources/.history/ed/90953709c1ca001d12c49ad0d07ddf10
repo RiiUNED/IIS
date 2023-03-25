@@ -1,0 +1,15 @@
+package gesFlota;
+
+import Tipos.TipoPuerto;
+
+public class Puerto {
+	private int ID;
+	private String nombre;
+	private TipoPuerto tipo;
+	
+	public Puerto(int ID, String nombre, TipoPuerto tipo) {
+		this.ID = ID;
+		this.nombre = nombre;
+		this.tipo = tipo;
+	}
+}

@@ -1,0 +1,36 @@
+package calendario;
+
+public class Fecha {
+	private int dia;
+	private Mes mes;
+	private int anno;
+	
+	public int getDia() {
+		return dia;
+	}
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+	public Mes getMes() {
+		return mes;
+	}
+	public void setMes(Mes mes) {
+		this.mes = mes;
+	}
+	public int getAnno() {
+		return anno;
+	}
+	public void setAnno(int anno) {
+		this.anno = anno;
+	}
+	
+	public boolean esBisiesto(int anno) {
+		int test1 = 4;
+		boolean bisiesto = false;
+		if(anno % test1) {
+			bisiesto = true;
+		}
+		return bisiesto;
+	}
+
+}

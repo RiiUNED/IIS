@@ -1,0 +1,12 @@
+package calendario;
+
+public class Calendario {
+
+	public static void main(String[] args) {
+		int total;
+		total = Servicios.sumDiaA(2023);
+		total += Servicios.SumDiaM(Mes.Febrero, 2023);
+		int init = total % 7;
+		Servicios.printMes(init+1, Mes.Febrero, 2023);
+	}
+}

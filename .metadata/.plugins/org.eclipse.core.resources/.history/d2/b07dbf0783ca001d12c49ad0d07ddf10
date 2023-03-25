@@ -1,0 +1,18 @@
+package calendario;
+
+public class Servicios {
+	
+	public static void printCabeza() {
+		System.out.println("======================");
+		System.out.println("LU MA MI JU VI | SA DO");
+		System.out.println("======================");
+	}
+	
+	public static void printN1(int n) {
+		System.out.print(" "+n);
+	}
+	public static void printN1F(int n) {
+		System.out.println(" "+n);
+	}
+
+}

@@ -1,0 +1,17 @@
+package calendario;
+
+public class Calendario {
+
+	public static void main(String[] args) {
+		int total;
+		Mes m = Mes.Marzo;
+		int anno = 1980;
+		total = Servicios.sumDiaA(anno);
+		System.out.println(total);
+		total += Servicios.SumDiaM(m, anno);
+		System.out.println(total);
+		int init = total % 7;
+		Servicios.printMes(init+1, m, anno);
+	}
+}
+
