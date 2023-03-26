@@ -1,0 +1,16 @@
+package gesFlota;
+
+import Fecha.*;
+import BBDD.*;
+
+public class GesFlota {
+
+	public static void main(String[] args) {
+		
+		BBDD bbdd = new BBDD();
+		
+		System.out.println("Puertos: " + bbdd.getPuertos().size());
+		System.out.println("Buques: "+ bbdd.getBuques().size());
+	}
+
+}

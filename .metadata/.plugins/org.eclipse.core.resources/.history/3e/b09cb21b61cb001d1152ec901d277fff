@@ -1,0 +1,32 @@
+package BBDD;
+
+import java.util.*;
+
+import Fecha.*;
+import gesFlota.*;
+import Tipos.*;
+
+public class BBDD {
+	private ArrayList<Puerto> puertos;
+	private ArrayList<Buque> buques;
+	
+	public BBDD() {
+		this.puertos = new ArrayList<Puerto>();
+		this.puertos.add(new Puerto(1, "Algeciras", TipoPuerto.Deposito));
+		this.puertos.add(new Puerto(2, "Valencia", TipoPuerto.Refineria));
+		this.puertos.add(new Puerto(3, "Barcelona", TipoPuerto.Yacimiento));
+		this.puertos.add(new Puerto(4, "Bilbao", TipoPuerto.Deposito));
+		this.puertos.add(new Puerto(5, "Tarragona", TipoPuerto.Refineria));
+		this.puertos.add(new Puerto(6, "Las Palmas", TipoPuerto.Yacimiento));
+		this.puertos.add(new Puerto(7, "Cartagena", TipoPuerto.Deposito));
+		this.puertos.add(new Puerto(8, "Castellon", TipoPuerto.Refineria));
+		this.puertos.add(new Puerto(9, "Huelva", TipoPuerto.Yacimiento));
+		this.puertos.add(new Puerto(10, "Sevilla", TipoPuerto.Deposito));
+		this.buques = new ArrayList<Buque>();
+		this.buques.add(new Buque("A", "Celeste", new Fecha(1, Mes.Abril, 2020), this.puertos.get(0)));
+		this.buques.add(new Buque("B", "Gran Este", new Fecha(15, Mes.Agosto, 2015), this.puertos.get(1)));
+		this.buques.add(new Buque("C", "Asturias", new Fecha(25, Mes.Junio, 2010), this.puertos.get(2)));
+		this.buques.add(new Buque("D", "Semper Albus", new Fecha(12, Mes.Noviembre, 2005), this.puertos.get(3)));
+		this.buques.add(new Buque("E", "Mata Mua", new Fecha(30, Mes.Marzo, 2001), this.puertos.get(4)));
+	}
+}

@@ -1,0 +1,49 @@
+package Gestion;
+
+import java.util.*;
+
+import BBDD.*;
+
+public class GesBuques {
+	
+	public void MenuEditarBuque(Scanner sc) {
+        System.out.println("Editar Buque:");
+        System.out.print("Identificador (letra entre A y E)? ");
+        char identificador = sc.next().charAt(0);
+        sc.nextLine(); // Consumir el salto de línea
+
+        System.out.print("Nombre (entre 1 y 20 caracteres)? ");
+        String nombre = sc.nextLine();
+
+        System.out.println("Fecha inicio:");
+        System.out.print("Día? ");
+        int diaInicio = sc.nextInt();
+
+        System.out.print("Mes? ");
+        int mesInicio = sc.nextInt();
+
+        System.out.print("Año? ");
+        int anioInicio = sc.nextInt();
+
+        System.out.println("Puertos posibles para la ubicación inicial del buque:");
+        for (int i = 0; i < puertosPosibles.size(); i++) {
+            System.out.println((i+1) + ". " + puertosPosibles.get(i));
+        }
+        System.out.print("Identificador de puerto inicio? ");
+        int puertoInicio = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+
+        System.out.print("IMPORTANTE: Esta opción borra los datos anteriores. " +
+                         "Son correctos los nuevos datos (S/N)? ");
+        char confirmacion = sc.next().charAt(0);
+
+        if (confirmacion == 'S' || confirmacion == 's') {
+            // Aquí iría el código para modificar los datos del buque
+            System.out.println("Los datos del buque han sido modificados correctamente.");
+        } else {
+            System.out.println("No se han realizado cambios en los datos del buque.");
+        }
+    }
+	}
+
+}

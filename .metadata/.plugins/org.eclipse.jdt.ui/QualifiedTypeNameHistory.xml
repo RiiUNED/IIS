@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.Boolean"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="calendario.Fecha"/>
+    <fullyQualifiedTypeName name="calendario.Mes"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="calendario.Servicios"/>
+    <fullyQualifiedTypeName name="gesFlota.Carga"/>
+    <fullyQualifiedTypeName name="Tipos.TipoPuerto"/>
+    <fullyQualifiedTypeName name="Tipos.TipoOperacion"/>
+    <fullyQualifiedTypeName name="Tipos.TipoCarga"/>
+    <fullyQualifiedTypeName name="gesFlota.Puerto"/>
+    <fullyQualifiedTypeName name="gesFlota.Operacion"/>
+    <fullyQualifiedTypeName name="gesFlota.Traslado"/>
+    <fullyQualifiedTypeName name="gesFlota.OperacionPuerto"/>
+</qualifiedTypeNameHistroy>

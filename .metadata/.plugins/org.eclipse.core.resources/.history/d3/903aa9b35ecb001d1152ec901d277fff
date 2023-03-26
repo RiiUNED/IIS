@@ -1,0 +1,26 @@
+package BBDD;
+
+import java.util.*;
+import gesFlota.*;
+import Tipos.*;
+
+public class BBDD {
+	private ArrayList<Puerto> puertos;
+	private ArrayList<Buque> buques;
+	
+	public BBDD() {
+		this.puertos = new ArrayList<Puerto>();
+		this.puertos.add(new Puerto(1, "Algeciras", TipoPuerto.Deposito));
+		this.puertos.add(new Puerto(2, "Valencia", TipoPuerto.Refineria));
+		this.puertos.add(new Puerto(3, "Barcelona", TipoPuerto.Yacimiento));
+		this.puertos.add(new Puerto(4, "Bilbao", TipoPuerto.Deposito));
+		this.puertos.add(new Puerto(5, "Tarragona", TipoPuerto.Refineria));
+		this.puertos.add(new Puerto(6, "Las Palmas", TipoPuerto.Yacimiento));
+		this.puertos.add(new Puerto(7, "Cartagena", TipoPuerto.Deposito));
+		this.puertos.add(new Puerto(8, "Castellon", TipoPuerto.Refineria));
+		this.puertos.add(new Puerto(9, "Huelva", TipoPuerto.Yacimiento));
+		this.puertos.add(new Puerto(10, "Sevilla", TipoPuerto.Deposito));
+		this.puertos.add(new Puerto(5, "Tarragona", TipoPuerto.Refineria));
+		this.puertos.add(new Puerto(6, "Algeciras", TipoPuerto.Yacimiento));
+	}
+}

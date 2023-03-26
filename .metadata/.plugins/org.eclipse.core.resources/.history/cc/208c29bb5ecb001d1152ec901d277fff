@@ -1,0 +1,11 @@
+package gesFlota;
+
+import Fecha.*;
+
+public class Buque {
+	private String ID;
+	private String nombre;
+	private Fecha fecha;
+	private Puerto botadura;
+
+}

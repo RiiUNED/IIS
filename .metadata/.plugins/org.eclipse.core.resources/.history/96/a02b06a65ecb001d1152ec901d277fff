@@ -1,0 +1,14 @@
+package BBDD;
+
+import java.util.*;
+import gesFlota.*;
+
+public class BBDD {
+	private ArrayList<Puerto> puertos;
+	private ArrayList<Buque> buques;
+	
+	public BBDD() {
+		this.puertos[] = new puertos[];
+		
+	}
+}

@@ -1,0 +1,9 @@
+package BBDD;
+
+import java.util.*;
+import gesFlota.*;
+
+public class BBDD {
+	private LinkedList<Puerto> puertos;
+	private LinkedList<Buque> buques;
+}

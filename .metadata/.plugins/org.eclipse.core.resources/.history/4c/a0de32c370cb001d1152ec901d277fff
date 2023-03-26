@@ -1,0 +1,58 @@
+package Gestion;
+
+import java.util.*;
+
+import Fecha.*;
+import BBDD.*;
+import Datos.*;
+
+public class GesFlota {
+
+	public static void main(String[] args) {
+		
+		BBDD bbdd = new BBDD();
+		
+		MenuPrincipal(bbdd);
+	}
+	
+	private static void MenuPrincipal(BBDD bbdd) {
+		Scanner sc = new Scanner(System.in);
+        char opcion;
+        do {
+            System.out.println("GesFlota: Gestión de Movimientos de una Flota");
+            System.out.println("Editar Puerto (P)");
+            System.out.println("Editar Buque (B)");
+            System.out.println("Estado Buques (E)");
+            System.out.println("Operar Buque (O)");
+            System.out.println("Resumen Mensual Buque (R)");
+            System.out.println("Salir (S)");
+            System.out.print("Teclear una opción válida (P|B|E|O|R|S)? ");
+            opcion = sc.next().charAt(0);
+            switch (opcion) {
+                case 'P':
+                    GesPuertos.EditarPuerto(sc, bbdd);
+                    break;
+                case 'B':
+                    // código para editar buque
+                    break;
+                case 'E':
+                    // código para mostrar estado de buques
+                    break;
+                case 'O':
+                    // código para operar buque
+                    break;
+                case 'R':
+                    // código para resumen mensual de buque
+                    break;
+                case 'S':
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
+                    break;
+            }
+        } while (opcion != 'S');
+        sc.close();
+    }
+
+}

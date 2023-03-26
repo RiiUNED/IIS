@@ -51,7 +51,7 @@ public class Servicios {
 			dias = 31;
 			break;
 		case Febrero:
-			if (Fecha.esBisiesto(anno)) {
+			if (FechaC.esBisiesto(anno)) {
 				dias = 29;
 			} else {
 				dias = 28;
@@ -131,10 +131,10 @@ public class Servicios {
 			if (i == 0) {
 				sum += op2;
 			}
-			if (i == 1 && Fecha.esBisiesto(anno)) {
+			if (i == 1 && FechaC.esBisiesto(anno)) {
 				sum += op4;
 			}
-			if (i == 1 && !Fecha.esBisiesto(anno)) {
+			if (i == 1 && !FechaC.esBisiesto(anno)) {
 				sum += op3;
 			}
 			if (i == 2) {
@@ -175,7 +175,7 @@ public class Servicios {
 		int dB = 366;
 		int dNB = 365;
 		for (int i = init; i <= top; i++) {
-			if (Fecha.esBisiesto(i)) {
+			if (FechaC.esBisiesto(i)) {
 				sum += dB;
 			} else {
 				sum += dNB;

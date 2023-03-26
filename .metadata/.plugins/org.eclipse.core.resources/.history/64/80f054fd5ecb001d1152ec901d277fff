@@ -1,0 +1,36 @@
+package gesFlota;
+
+import Fecha.*;
+
+public class Buque {
+	private String ID;
+	private String nombre;
+	private Fecha fecha;
+	private Puerto botadura;
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public Fecha getFecha() {
+		return fecha;
+	}
+	public void setFecha(Fecha fecha) {
+		this.fecha = fecha;
+	}
+	public Puerto getBotadura() {
+		return botadura;
+	}
+	public void setBotadura(Puerto botadura) {
+		this.botadura = botadura;
+	}
+
+	
+}

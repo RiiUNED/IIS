@@ -1,0 +1,30 @@
+package Gestion;
+
+import java.util.*;
+
+import BBDD.*;
+
+public class GesPuertos {
+	public static void MenuEditarPuerto(Scanner sc, BBDD bbdd) {
+		 int id;
+	     String nombre;
+	     char tipo, confirmacion;
+	     do {
+	         System.out.println("Editar Puerto:");
+	         System.out.print("Identificador (número entre 1 y 10)? ");
+	         id = sc.nextInt();
+	         sc.nextLine(); // consume el salto de línea después del número entero
+	         System.out.print("Nombre (entre 1 y 20 caracteres)? ");
+	         nombre = sc.nextLine();
+	         System.out.print("Tipo (Y-Yacimiento, R-Refinería, D-Deposito)? ");
+	         tipo = sc.next().charAt(0);
+	         System.out.print("IMPORTANTE: Esta opción borra los datos anteriores. Son " +
+	                          "correctos los nuevos datos (S/N)? ");
+	         confirmacion = sc.next().charAt(0);
+	         if (confirmacion == 'S') {
+	             // código para actualizar los datos del puerto con id dado
+	             break; // salir del bucle si se confirmaron los nuevos datos
+	         }
+	     } while (true);
+	}
+}

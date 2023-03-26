@@ -1,0 +1,56 @@
+package gesFlota;
+
+import Tipos.TipoCarga;
+import Tipos.TipoOperacion;
+
+public class OperacionPuerto {
+	private Puerto puerto;
+	private TipoOperacion operacion;
+	private TipoCarga carga;
+	private int duracion;
+	
+	public OperacionPuerto(
+			Puerto puerto,
+			TipoOperacion tO,
+			TipoCarga tC,
+			int dur) {
+		this.puerto = puerto;
+		this.operacion = tO;
+		this.carga = tC;
+		this.duracion = dur;
+	}
+
+	public Puerto getPuerto() {
+		return puerto;
+	}
+
+	public void setPuerto(Puerto puerto) {
+		this.puerto = puerto;
+	}
+
+	public TipoOperacion getOperacion() {
+		return operacion;
+	}
+
+	public void setOperacion(TipoOperacion operacion) {
+		this.operacion = operacion;
+	}
+
+	public TipoCarga getCarga() {
+		return carga;
+	}
+
+	public void setCarga(TipoCarga carga) {
+		this.carga = carga;
+	}
+
+	public int getDuracion() {
+		return duracion;
+	}
+
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
+	
+	
+}

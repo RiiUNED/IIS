@@ -1,0 +1,147 @@
+package Fecha;
+
+public class Fecha {
+	private int dia;
+	private Mes mes;
+	private int anno;
+	
+	public Fecha(int d, Mes m, int a) {
+		this.dia = d;
+		this.mes = m;
+		this.anno = a;
+	}
+
+	public int getDia() {
+		return dia;
+	}
+
+	public void setDia(int dia) {
+		this.dia = dia;
+	}
+
+	public Mes getMes() {
+		return mes;
+	}
+
+	public void setMes(Mes mes) {
+		this.mes = mes;
+	}
+
+	public int getAnno() {
+		return anno;
+	}
+
+	public void setAnno(int anno) {
+		this.anno = anno;
+	}
+	
+	public void show() {
+		int mesO = this.mes.ordinal() + 1;
+		System.out.println(this.dia+"/"+mesO+"/"+this.anno);
+	}
+	
+	public Fecha sumFecha(Fecha fecha, int dias) {
+		Fecha sumFecha = new Fecha(0, Mes.Abril, 0);
+		System.out.println("dias: "+dias);
+		int nuevoDia;
+		Mes nuevoMes;
+		int nuevoAnno;
+		int diasMes = getDiasMes(this.getMes(), this.getAnno());
+		int diaMes = this.getDia();
+		if(diaMes + dias > diasMes) {
+			int numMes = this.getMes().ordinal();
+			sumFecha.setDia(1);
+			Mes[] meses = mes.values();
+			nuevoAnno = fecha.getAnno();
+			int diasConsumidos = diasMes - diaMes;
+			System.out.println("dias consumidos : "+diasConsumidos);
+			int diasR = dias - diasConsumidos;
+			System.out.println("dias que faltan : "+diasR);
+			if(numMes<11) {
+				Mes mes = meses[numMes+1];
+				sumFecha.setMes(mes);
+				sumFecha.setAnno(nuevoAnno);
+				sumFecha(sumFecha, diasR);
+			} else {
+				Mes mes = meses[0];
+				sumFecha.setMes(mes);
+				sumFecha.setAnno(nuevoAnno+1);
+				sumFecha.setAnno(nuevoAnno);
+				sumFecha(sumFecha, diasR);
+			}
+			
+		} else {
+			System.out.println("dias: "+dias);
+			nuevoDia = diaMes + dias;
+			System.out.println("nuevo dia : "+nuevoDia);
+			sumFecha.setDia(nuevoDia);
+			sumFecha.show();
+			nuevoMes = this.getMes();
+			sumFecha.setMes(nuevoMes);
+			nuevoAnno = this.getAnno();
+		}
+		
+		return sumFecha;
+	}
+	
+	int getDiasMes(Mes mes, int anno) {
+		int dias = 0;
+		switch (mes){
+		case Enero:
+			dias = 31;
+			break;
+		case Febrero:
+			dias = (esBisiesto(anno)) ? 29 : 28;
+			break;
+		case Marzo:
+			dias = 31;
+			break;
+		case Abril:
+			dias = 30;
+			break;
+		case Mayo:
+			dias = 31;
+			break;
+		case Junio:
+			dias = 30;
+			break;
+		case Julio:
+			dias = 31;
+			break;
+		case Agosto:
+			dias = 31;
+			break;
+		case Septiembre:
+			dias = 30;
+			break;
+		case Octubre:
+			dias = 31;
+			break;
+		case Noviembre:
+			dias = 30;
+			break;
+		case Diciembre:
+			dias = 31;
+			break;
+		}
+		return dias;
+	}
+
+	boolean esBisiesto(int anno) {
+		int test1 = 4;
+		int test2 = 100;
+		int test3 = 400;
+		boolean bisiesto = false;
+		if (anno % test1 == 0) {
+			bisiesto = true;
+			if (anno % test2 == 0) {
+				bisiesto = false;
+			}
+			if (anno % test3 == 0) {
+				bisiesto = true;
+			}
+		}
+		return bisiesto;
+	}
+
+}
