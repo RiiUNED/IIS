@@ -1,0 +1,82 @@
+package Gestion;
+
+import java.util.*;
+
+import Fecha.*;
+import BBDD.*;
+//import Datos.*;
+
+public class GesFlota {
+
+	public static void main(String[] args) {
+		
+		BBDD bbdd = new BBDD();
+				
+		//MenuPrincipal(bbdd);
+		
+		System.out.println("*");
+		Fecha f1 = new Fecha(10, Mes.Enero, 2023);
+		Fecha f2;
+		int dias = 10;
+		for(int i=1; i<=10; ++i) {
+			f2 = new Fecha(i, Mes.Enero, 2023);
+			System.out.println("**");
+			if(f2.perteneceLapso(f1, dias)) {
+				f2.show();
+				System.out.print("Pertecene al lapso: ");
+				f1.show();
+				System.out.println("y "+dias+" dias.");
+			} else {
+				f2.show();
+				System.out.print("No pertecene al lapso: ");
+				f1.show();
+				System.out.println("y "+dias+" dias.");
+			}
+		}
+
+	}
+	
+	private static void MenuPrincipal(BBDD bbdd) {
+		Scanner sc = new Scanner(System.in);
+        char opcion;
+        do {
+            System.out.println("GesFlota: Gestión de Movimientos de una Flota");
+            System.out.println("Editar Puerto (P)");
+            System.out.println("Editar Buque (B)");
+            System.out.println("Estado Buques (E)");
+            System.out.println("Operar Buque (O)");
+            System.out.println("Resumen Mensual Buque (R)");
+            System.out.println("Salir (S)");
+            System.out.print("Teclear una opción válida (P|B|E|O|R|S)? ");
+            opcion = sc.next().charAt(0);
+            switch (opcion) {
+                case 'P':
+                	System.out.println("Ha seleccionado EDITAR PUERTO");
+                    GesPuertos.MenuEditarPuerto(sc, bbdd);
+                    break;
+                case 'B':
+                	System.out.println("Ha seleccionado EDITAR BUQUE");
+                    GesBuques.MenuEditarBuque(sc, bbdd);
+                    break;
+                case 'E':
+                	System.out.println("Ha seleccionado ESTADO BUQUE");
+                    GesBuques.EstadoBuques(bbdd);
+                    break;
+                case 'O':
+                    // código para operar buque
+                    break;
+                case 'R':
+                    // código para resumen mensual de buque
+                    break;
+                case 'S':
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
+                    break;
+            }
+        } while (opcion != 'S');
+        sc.close();
+    }
+
+}

@@ -2,32 +2,39 @@ package Datos;
 
 import Fecha.*;
 
-public class Operacion implements Comparable<Operacion>{
+public class Operacion implements Comparable<Operacion> {
 	private Fecha fecha;
 	private OperacionPuerto carga;
 	private Traslado traslado;
 	private OperacionPuerto descarga;
-	
-	public Operacion(
-			Fecha fecha, 
-			OperacionPuerto carga, 
-			Traslado traslado, 
-			OperacionPuerto descarga) {
-		this.fecha = fecha;
+
+	public Operacion(OperacionPuerto carga, Traslado traslado, OperacionPuerto descarga) {
 		this.carga = carga;
 		this.traslado = traslado;
 		this.descarga = descarga;
+		if (this.carga == null) {
+			if (this.traslado == null) {
+				this.fecha = this.descarga.getFecha();
+			} else {
+				this.fecha = this.traslado.getInicio();
+			}
+		} else {
+			this.fecha = this.carga.getFecha();
+		}
 	}
-	
+
 	public void show() {
-		System.out.print("Fecha: ");
-		this.fecha.show();
-		System.out.print("Operacion origen: ");
-		this.carga.show();
-		System.out.print("Operacion destino: ");
-		this.descarga.show();
+		if (this.carga != null) {
+			this.carga.show();
+		} else {System.out.println("No hay programada carga");}
+		if (this.traslado != null) {
+			this.traslado.show();
+		} else { System.out.println("No hay programado traslado");}
+		if (this.descarga != null) {
+			this.descarga.show();
+		} else { System.out.println("No hay programada descarga");}
 	}
-	
+
 	public Fecha getFecha() {
 		return fecha;
 	}
@@ -59,10 +66,22 @@ public class Operacion implements Comparable<Operacion>{
 	public void setDescarga(OperacionPuerto descarga) {
 		this.descarga = descarga;
 	}
-	
+
 	@Override
 	public int compareTo(Operacion o2) {
 		return this.fecha.compareTo(o2.fecha);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		Operacion other = (Operacion) obj;
+		return this.fecha.equals(other.getFecha());
 	}
 
 }

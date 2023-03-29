@@ -12,11 +12,6 @@ public class GesFlota {
 		
 		BBDD bbdd = new BBDD();
 				
-		//Fecha f1 = new Fecha(1, Mes.Enero, 2023);
-		//Fecha f2 = new Fecha(10, Mes.Enero, 2023);
-		//System.out.println(f1.compareTo(f2)); -> -1
-		//System.out.println(f2.compareTo(f1)); -> 1
-		//System.out.println(f1.compareTo(f1)); -> 0
 		MenuPrincipal(bbdd);
 
 	}
@@ -48,10 +43,12 @@ public class GesFlota {
                     GesBuques.EstadoBuques(bbdd);
                     break;
                 case 'O':
-                    // código para operar buque
+                	System.out.println("Ha seleccionado OPERAR BUQUE");
+                	GesBuques.MenuOperarBuque(bbdd, sc);
                     break;
                 case 'R':
-                    // código para resumen mensual de buque
+                	System.out.println("Ha seleccionado RESUMEN MENSUAL BUQUE");
+                    GesBuques.ResumenMensual(sc, bbdd);
                     break;
                 case 'S':
                     System.out.println("Saliendo...");

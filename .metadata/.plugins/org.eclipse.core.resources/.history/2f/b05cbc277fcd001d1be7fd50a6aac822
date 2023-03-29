@@ -1,0 +1,308 @@
+package Fecha;
+
+import java.util.*;
+
+public class Servicios {
+
+	public static Mes getMes(Scanner sc) {
+		int mes;
+
+		do {
+			System.out.print("Ingrese el mes (1..12): ");
+			mes = sc.nextInt();
+		} while (mes < 1 || mes > 12);
+
+		return Mes.values().clone()[mes-1]; 
+	}
+	
+	public static int getAnno(Scanner sc) {
+		int anno;
+		do {
+			System.out.print("Ingrese el año (1601..3000): ");
+			anno = sc.nextInt();
+		} while (anno < 1601 || anno > 3000);
+		
+		return anno;
+	}
+	
+	public static void imprimirMES(Mes mes, int anno, LinkedList<String> dias) {
+		int total = sumDiaA(anno);
+		total += SumDiaM(mes, anno);
+		
+		int init = total % 7;
+		
+		printMes(init+1, mes, anno, dias);
+	}
+
+	private static void printMes(int init, Mes mes, int anno, LinkedList<String> dias) {
+		System.out.println(mes + " - " + anno);
+		int top = diasMes(mes, anno);
+		int corte = 9 - init;
+		printCabeza();
+		Integer marcador = printDinit(init, dias);
+		System.out.println();
+		printMes(corte, top, marcador, dias);
+	}
+
+	private static int diasMes(Mes mes, int anno) {
+		int dias = 0;
+		switch (mes) {
+		case Enero:
+			dias = 31;
+			break;
+		case Febrero:
+			if (Fecha.esBisiesto(anno)) {
+				dias = 29;
+			} else {
+				dias = 28;
+				break;
+			}
+			break;
+		case Marzo:
+			dias = 31;
+			break;
+		case Abril:
+			dias = 30;
+			break;
+		case Mayo:
+			dias = 31;
+			break;
+		case Junio:
+			dias = 30;
+			break;
+		case Julio:
+			dias = 31;
+			break;
+		case Agosto:
+			dias = 31;
+			break;
+		case Septiembre:
+			dias = 30;
+			break;
+		case Octubre:
+			dias = 31;
+			break;
+		case Noviembre:
+			dias = 30;
+			break;
+		case Diciembre:
+			dias = 30;
+			break;
+
+		}
+		return dias;
+	}
+
+	private static Integer printDinit(int init, LinkedList<String> dias) {
+		Integer marcador = 1;
+		int limite = 5;
+		String blanco = "  ";
+		String dia = " .";
+		String mS =null;
+		if (init <= 5) {
+			for (int i = 1; i < init; ++i) {
+				System.out.print(blanco);
+				separador1();
+			}
+			for (int i = 1; i <= limite - init; ++i) {
+				//printDia(i);
+				mS = marcador.toString();
+				if(dias.contains(mS)) {
+					System.out.print("**");	
+				} else {
+					printDia(dia);	
+				}
+				++marcador;
+			}
+			//printViernes(6 - init);
+			printViernes(dia);
+			for (int i = limite - init + 2; i <= 8 - init; ++i) {
+				//printDia(i);
+				mS = marcador.toString();
+				if(dias.contains(mS)) {
+					System.out.print("**");	
+				} else {
+					printDia(dia);	
+				}
+				++marcador;
+			}
+		} else {
+			for (int i = 1; i <= init - 1; ++i) {
+				System.out.print(blanco);
+				separador1();
+			}
+			System.out.print(blanco);
+			for (int i = 1; i <= 8 - init; ++i) {
+				//printDia(i);
+				mS = marcador.toString();
+				if(dias.contains(mS)) {
+					System.out.print("**");	
+				} else {
+					printDia(dia);	
+				}
+				++marcador;
+			}
+		}
+		return marcador;
+	}
+
+	private static int SumDiaM(Mes mes, int anno) {
+		int sum = 0;
+		int op1 = 30;
+		int op2 = 31;
+		int op3 = 28;
+		int op4 = 29;
+		int top = mes.ordinal();
+		for (int i = 0; i < top; ++i) {
+			if (i == 0) {
+				sum += op2;
+			}
+			if (i == 1 && Fecha.esBisiesto(anno)) {
+				sum += op4;
+			}
+			if (i == 1 && !Fecha.esBisiesto(anno)) {
+				sum += op3;
+			}
+			if (i == 2) {
+				sum += op2;
+			}
+			if (i == 3) {
+				sum += op1;
+			}
+			if (i == 4) {
+				sum += op2;
+			}
+			if (i == 5) {
+				sum += op1;
+			}
+			if (i == 6) {
+				sum += op2;
+			}
+			if (i == 7) {
+				sum += op2;
+			}
+			if (i == 8) {
+				sum += op1;
+			}
+			if (i == 9) {
+				sum += op2;
+			}
+			if (i == 10) {
+				sum += op1;
+			}
+		}
+		return sum;
+	}
+
+	private static int sumDiaA(int anno) {
+		int sum = 0;
+		int init = 1601;
+		int top = anno - 1;
+		int dB = 366;
+		int dNB = 365;
+		for (int i = init; i <= top; i++) {
+			if (Fecha.esBisiesto(i)) {
+				sum += dB;
+			} else {
+				sum += dNB;
+			}
+		}
+		return sum;
+	}
+
+	private static void printCabeza() {
+		System.out.println("======================");
+		System.out.println("LU MA MI JU VI | SA DO");
+		System.out.println("======================");
+	}
+
+	private static void printMes(int init, int top) {
+		int viernes = 5;
+		int domingo = 7;
+		boolean cV = false;
+		boolean cD = false;
+		int contador = 1;
+		String dia = " .";
+		for (int i = init; i <= top; i++) {
+			cV = contador % viernes == 0;
+			cD = contador % domingo == 0;
+			if (!(cV) && !(cD)) {
+				printDia(dia);
+			}
+			if (cV) {
+				//printViernes(i);
+				printViernes(dia);
+			}
+			if (cD) {
+				//printDomingo(i);
+				printDomingo(dia);
+				contador = 0;
+			}
+			++contador;
+		}
+	}
+
+	//private static void printDomingo(int dia) {
+	private static void printDomingo(String dia) {
+		/*
+		int l = 10;
+		if (dia < l) {
+			printN1F(dia);
+		} else {
+			printN2F(dia);
+		}*/
+		System.out.println(dia);
+	}
+
+	private static void printViernes(String dia) {
+/*
+		int l = 10;
+		if (dia < l) {
+			printN1(dia);
+		} else {
+			printN2(dia);
+		}*/
+		System.out.print(dia);
+		separador2();
+
+	}
+
+	//private static void printDia(int dia) {
+	private static void printDia(String dia) {
+		/*
+		int l = 10;
+		if (dia < l) {
+			printN1(dia);
+		} else {
+			printN2(dia);
+		}*/
+		System.out.print(dia);
+		separador1();
+
+	}
+/*
+	private static void printN1(int n) {
+		System.out.print(" " + n);
+	}
+
+	private static void printN1F(int n) {
+		System.out.println(" " + n);
+	}
+
+	private static void printN2(int n) {
+		System.out.print(n);
+	}
+
+	private static void printN2F(int n) {
+		System.out.println(n);
+	}*/
+
+	private static void separador1() {
+		System.out.print(" ");
+	}
+
+	private static void separador2() {
+		System.out.print(" | ");
+	}
+
+}

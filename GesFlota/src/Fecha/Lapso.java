@@ -1,0 +1,41 @@
+package Fecha;
+
+public class Lapso {
+	private Fecha incio;
+	private Fecha fin;
+
+	public Lapso(Fecha inicio, int dias) {
+		this.incio = inicio;
+		this.fin = incio.sumFecha(dias);
+	}
+
+	// Fecha f1 = new Fecha(1, Mes.Enero, 2023);
+	// Fecha f2 = new Fecha(10, Mes.Enero, 2023);
+	// System.out.println(f1.compareTo(f2)); -> -1
+	// System.out.println(f2.compareTo(f1)); -> 1
+	// System.out.println(f1.compareTo(f1)); -> 0
+	public boolean pertece(Fecha fecha) {
+		boolean pertenece = false;
+		boolean c1 = this.incio.compareTo(fecha)<=0;
+		boolean c2 = this.fin.compareTo(fecha)>=0;
+		pertenece = (c1 && c2) ? true : false;
+		return pertenece;
+	}
+
+	public Fecha getIncio() {
+		return incio;
+	}
+
+	public void setIncio(Fecha incio) {
+		this.incio = incio;
+	}
+
+	public Fecha getFin() {
+		return fin;
+	}
+
+	public void setFin(Fecha fin) {
+		this.fin = fin;
+	}
+
+}

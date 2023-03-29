@@ -1,0 +1,17 @@
+package Fecha;
+
+public class Lapso {	
+	private Fecha incio;
+	private Fecha fin;
+
+	public Lapso(Fecha inicio, int dias) {
+		this.incio = inicio;
+		this.fin = incio.sumFecha(dias);
+	}
+	
+	public boolean pertece(Fecha fecha) {
+		boolean pertenece = false;
+		return pertenece;
+	}
+
+}

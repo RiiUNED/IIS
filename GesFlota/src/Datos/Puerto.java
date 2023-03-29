@@ -13,9 +13,16 @@ public class Puerto {
 		this.tipo = tipo;
 	}
 	
-	public boolean equals(Puerto p2) {
-		boolean resultado = (this.ID == p2.getID()) ? true : false;
-		return resultado;
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    Puerto other = (Puerto) obj;
+	    return this.ID == other.getID();
 	}
 
 	public int getID() {

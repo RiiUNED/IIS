@@ -1,11 +1,15 @@
 package Datos;
 
+import Fecha.*;
+
 public class Traslado {
-	private Puerto origen;
+	private Fecha inicio;
 	private int duracion;
+	private Puerto origen;
 	private Puerto destino;
 	
-	public Traslado (Puerto o, int duracion, Puerto destino) {
+	public Traslado (Fecha inicio, Puerto o, int duracion, Puerto destino) {
+		this.inicio = inicio;
 		this.origen = o;
 		this.duracion = duracion;
 		this.destino = destino;
@@ -35,7 +39,18 @@ public class Traslado {
 		this.destino = destino;
 	}
 	
+	public Fecha getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(Fecha inicio) {
+		this.inicio = inicio;
+	}
+
 	public void show() {
+		System.out.print("El trasaldo se inicia el: ");
+		this.inicio.show();
+		System.out.println("El trasaldo dura "+this.duracion+" dias.");
 		System.out.print("Origen: ");
 		this.origen.show();
 		System.out.print("Destino: ");

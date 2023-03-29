@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
-    <fullyQualifiedTypeName name="java.util.LinkedList"/>
-    <fullyQualifiedTypeName name="calendario.Fecha"/>
     <fullyQualifiedTypeName name="calendario.Mes"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="calendario.Servicios"/>
     <fullyQualifiedTypeName name="gesFlota.Carga"/>
-    <fullyQualifiedTypeName name="Tipos.TipoPuerto"/>
-    <fullyQualifiedTypeName name="Tipos.TipoOperacion"/>
-    <fullyQualifiedTypeName name="Tipos.TipoCarga"/>
     <fullyQualifiedTypeName name="gesFlota.Puerto"/>
     <fullyQualifiedTypeName name="gesFlota.Operacion"/>
     <fullyQualifiedTypeName name="gesFlota.Traslado"/>
     <fullyQualifiedTypeName name="gesFlota.OperacionPuerto"/>
+    <fullyQualifiedTypeName name="org.graalvm.compiler.hotspot.nodes.PluginFactory_JumpToExceptionHandlerInCallerNode"/>
+    <fullyQualifiedTypeName name="calendario.Fecha"/>
+    <fullyQualifiedTypeName name="sun.jvm.hotspot.oops.java_lang_Class"/>
+    <fullyQualifiedTypeName name="java.awt.List"/>
+    <fullyQualifiedTypeName name="gesFlota.Buque"/>
+    <fullyQualifiedTypeName name="Gestion.GesPuertos"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.lang.Comparable"/>
+    <fullyQualifiedTypeName name="Fecha.Mes"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="Tipos.TipoPuerto"/>
+    <fullyQualifiedTypeName name="Datos.Puerto"/>
+    <fullyQualifiedTypeName name="Tipos.TipoOperacion"/>
+    <fullyQualifiedTypeName name="Gestion.GesBuques"/>
+    <fullyQualifiedTypeName name="Gestion.GesOperaciones"/>
+    <fullyQualifiedTypeName name="java.util.TreeSet"/>
+    <fullyQualifiedTypeName name="Tipos.TipoCarga"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="Datos.Buque"/>
+    <fullyQualifiedTypeName name="java.util.SortedSet"/>
+    <fullyQualifiedTypeName name="Datos.Operacion"/>
+    <fullyQualifiedTypeName name="Datos.Traslado"/>
+    <fullyQualifiedTypeName name="Datos.OperacionPuerto"/>
+    <fullyQualifiedTypeName name="Fecha.Lapso"/>
+    <fullyQualifiedTypeName name="Fecha.Fecha"/>
+    <fullyQualifiedTypeName name="Fecha.Servicios"/>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="Fecha.Calendario"/>
 </qualifiedTypeNameHistroy>

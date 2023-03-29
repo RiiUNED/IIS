@@ -1,8 +1,0 @@
-package calendario;
-
-public class Fecha {
-	private int dia;
-	private Mes mes;
-	private int anno;
-
-}
